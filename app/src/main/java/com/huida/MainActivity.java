@@ -10,7 +10,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         //123
         setContentView(R.layout.activity_main);
-        //我是韩超宇
+        //我是韩超宇，is sb
         //dfdfd
     }
 }
