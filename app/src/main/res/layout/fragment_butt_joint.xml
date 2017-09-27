@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        >
+        <RadioGroup
+            android:id="@+id/rg_butt_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginRight="50dp"
+            android:layout_marginLeft="50dp"
+            android:paddingTop="20dp">
+            <RadioButton
+                android:id="@+id/rb_butt_buy"
+                android:text="求买"
+               style="@style/Radio_main_style"
+                android:drawableBottom="@drawable/rb_butt_title_line_selector"/>
+            <RadioButton
+                android:id="@+id/rb_butt_sale"
+                android:text="甩卖"
+                style="@style/Radio_main_style"
+                android:drawableBottom="@drawable/rb_butt_title_line_selector"
+               />
+
+        </RadioGroup>
+
+    </RelativeLayout>
+
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/butt_joint_bg"/>
+
+
+
+</LinearLayout>

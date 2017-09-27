@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.android.percent.support.PercentLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:id="@+id/ll_jingfen_layout">
+    <com.zhy.android.percent.support.PercentLinearLayout
+        android:id="@+id/pll_fpj_title"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_heightPercent="18%w">
+
+        <TextView
+            android:id="@+id/tv_jingfen_saixuan"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:drawableRight="@mipmap/more"
+            android:drawablePadding="3dp"
+            android:text="筛选"
+            android:textSize="20sp"
+            app:layout_widthPercent="20%w"
+            android:visibility="visible"/>
+
+        <RadioGroup
+            android:id="@+id/rg_fpj_title"
+
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:orientation="horizontal"
+            android:paddingTop="20dp"
+           >
+
+            <RadioButton
+
+                android:id="@+id/rb_fpj_jinfen"
+                style="@style/Radio_main_style"
+                android:checked="true"
+                android:text="精分"
+                android:textSize="20sp"
+                android:drawableBottom="@drawable/line_blue"
+                android:drawablePadding="4dp"/>
+
+            <RadioButton
+                android:id="@+id/rb_fpj_xifen"
+                style="@style/Radio_main_style"
+                android:layout_width="0dp"
+                android:text="细分"
+
+                android:textSize="20sp" />
+        </RadioGroup>
+        <ImageView
+            android:id="@+id/iv_jingfen_search"
+            android:layout_width="0dp"
+            app:layout_widthPercent="8%w"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@mipmap/fangdajing"
+            android:scaleType="fitCenter"
+            android:visibility="visible"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+
+            />
+
+    </com.zhy.android.percent.support.PercentLinearLayout>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_heightPercent="1%w"
+        android:background="@mipmap/jingfen_xiala_bg"/>
+
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_fpj"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+    </android.support.v4.view.ViewPager>
+
+</com.zhy.android.percent.support.PercentLinearLayout>

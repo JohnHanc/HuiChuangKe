@@ -1,113 +1,118 @@
 package com.huida.activity;
 
-import android.app.FragmentTransaction;
-import android.support.annotation.IdRes;
+import android.app.ActivityGroup;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.IdRes;
+import android.util.Log;
 import android.view.View;
-import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 
 import com.huida.R;
-import com.huida.fragment.BaseFragment;
-import com.huida.fragment.ButtJointFragment;
-import com.huida.fragment.DynamicFragment;
-import com.huida.fragment.FindPersonFragment;
-import com.huida.fragment.FindProjectFragment;
-import com.huida.fragment.MineFragment;
 
-import java.util.ArrayList;
 
-/**
- * 5个radiobutton  1个帧布局
- */
-
-public class MainActivity extends BaseActivity {
-
-    private FrameLayout fl_main;
+public class MainActivity extends ActivityGroup {
+    private  LinearLayout one,two,three,four,five,bodyView;
     private RadioGroup rg_main;
-    private ArrayList<BaseFragment> fragmentlist;
+    private int flag=0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //
+        Log.e("liling", "onCreate: "+"liling" );
+        setContentView(R.layout.activity_main);
+        initMainView();
+        initData();
+        showView(flag);
 
     }
+    public void showView(int flag) {
+        Log.e("liling", "showView: "+"showview" );
+        switch (flag) {
+            case 0:
+                bodyView.removeAllViews();
+                View v = getLocalActivityManager().startActivity("one",
+                        new Intent(this, FindPersonActivity.class)).getDecorView();
 
-    @Override
-    public View ininView() {
-        View view = View.inflate(this, R.layout.activity_main, null);
-        fl_main = (FrameLayout) view.findViewById(R.id.fl_main);
-        rg_main = (RadioGroup) view.findViewById(R.id.rg_main);
-        return view;
+
+
+                bodyView.addView(v);
+                break;
+            case 1:
+                bodyView.removeAllViews();
+                bodyView.addView(getLocalActivityManager().startActivity("two",
+                        new Intent(this, FindProjectActivity.class))
+                        .getDecorView());
+
+                break;
+            case 2:
+                bodyView.removeAllViews();
+                bodyView.addView(getLocalActivityManager().startActivity(
+                        "three", new Intent(this, DynamicActivity.class))
+                        .getDecorView());
+
+
+                break;
+            case 3:
+                bodyView.removeAllViews();
+                bodyView.addView(getLocalActivityManager().startActivity(
+                        "four", new Intent(this, DuttActivity.class))
+                        .getDecorView());
+
+                break;
+            case 4:
+                bodyView.removeAllViews();
+                bodyView.addView(getLocalActivityManager().startActivity(
+                        "five", new Intent(this, MineActivity.class))
+                        .getDecorView());
+
+                break;
+            default:
+                break;
+        }
     }
 
-    @Override
-    protected void initData() {
-        super.initData();
-        //默认 找人 选中
-        rg_main.check(R.id.rb_findperson);
 
-        //添加5个fragment
-        fragmentlist = new ArrayList<BaseFragment>();
-        fragmentlist.add(new FindPersonFragment(this));
-        fragmentlist.add(new FindProjectFragment(this));
-        fragmentlist.add(new DynamicFragment(this));
-        fragmentlist.add(new ButtJointFragment(this));
-        fragmentlist.add(new MineFragment(this));
-        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.fl_main,fragmentlist.get(0));
-        fragmentTransaction.add(fragmentlist.get(1),"");
-        fragmentTransaction.add(fragmentlist.get(2),"");
-        fragmentTransaction.add(fragmentlist.get(3),"");
-        fragmentTransaction.add(fragmentlist.get(4),"");
-        fragmentTransaction.commit();
-
-//        fl_main.addView(fragmentlist.get(0).rootview);
-//       if (fl_main.getChildCount()==0){
-//            View rootView = fragmentlist.get(0).rootview;
-//           fl_main.removeAllViews();
-//            fl_main.addView(rootView);
-//
-//
-//
-//        }
-
-
+    private void initData() {
+        Log.e("liling", "initData: "+"initdata");
         rg_main.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
-                fl_main.removeAllViews();
                 switch (i){
                     case R.id.rb_findperson:
+                    showView(0);
 
-                        //找人
-                        fl_main.addView(fragmentlist.get(0).rootview);
                         break;
                     case R.id.rb_findproject:
-                        //找项目
-                        rg_main.check(R.id.rb_findproject);
-                        fl_main.addView(fragmentlist.get(1).rootview);
-
+                        showView(1);
                         break;
                     case R.id.rb_dynamic:
-                        //动态
-                        rg_main.check(R.id.rb_dynamic);
-                        fl_main.addView(fragmentlist.get(2).rootview);
+                        showView(2);
                         break;
-                    case R.id.rb_butt:
-                        //对接
-                        rg_main.check(R.id.rb_butt);
-                        fl_main.addView(fragmentlist.get(3).rootview);
+                    case  R.id.rb_butt:
+                        showView(3);
                         break;
                     case R.id.rb_mine:
-                        //我的
-                        rg_main.check(R.id.rb_mine);
-                        fl_main.addView(fragmentlist.get(4).rootview);
+                        showView(4);
                         break;
                 }
             }
         });
+
+    }
+
+    private void initMainView() {
+        one=(LinearLayout) findViewById(R.id.one);
+        two=(LinearLayout) findViewById(R.id.two);
+        three=(LinearLayout) findViewById(R.id.three);
+        four=(LinearLayout) findViewById(R.id.four);
+        five=(LinearLayout) findViewById(R.id.five);
+        rg_main = (RadioGroup) findViewById(R.id.rg_main);
+        bodyView=(LinearLayout) findViewById(R.id.body);
+
+
 
     }
 }

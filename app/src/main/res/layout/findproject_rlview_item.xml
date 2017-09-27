@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dp"
+    android:layout_marginTop="20dp"
+    >
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:orientation="horizontal"
+        android:layout_gravity="center_vertical"
+        >
+        <ImageView
+            android:id="@+id/iv_fpj_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/circle_image"
+            />
+        <!--个人介绍情况-->
+        <RelativeLayout
+
+            android:layout_width="0dp"
+            android:layout_weight="8"
+            android:layout_height="match_parent"
+            android:padding="5dp"
+            android:gravity="center"
+
+            >
+            <TextView
+                android:id="@+id/rl_item_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ID教育培训"
+                android:textSize="20sp"
+                android:textColor="#000"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="5dp"/>
+            <TextView
+                android:id="@+id/rl_item_place"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="秦皇岛"
+                android:textSize="15sp"
+                android:textColor="#7F7F7F"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="5dp"/>
+            <TextView
+                android:id="@+id/rl_item_brief"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="自己创立自己创立自己创立"
+                android:textSize="20sp"
+                android:textColor="#7f7f7f"
+                android:layout_below="@id/rl_item_title"
+                android:layout_alignLeft="@id/rl_item_title"/>
+        </RelativeLayout>
+        </LinearLayout>
+
+
+
+
+    <!--个人标签-->
+
+
+    <LinearLayout
+        android:id="@+id/fpj_item_person_lable"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="个人标签:"/>
+        <TextView
+           style="@style/fpj_msglable_text_style"
+            android:text="学生党"
+            />
+        <TextView
+            style="@style/fpj_msglable_text_style"
+            android:text="河北科技师范学院"
+            />
+
+
+
+    </LinearLayout>
+    <!--项目标签-->
+    <LinearLayout
+        android:id="@+id/fpj_item_project_label"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="项目标签:"
+           />
+        <TextView
+            style="@style/fpj_msglable_text_style"
+            android:text="学生党"
+           />
+        <TextView
+            style="@style/fpj_msglable_text_style"
+            android:text="河北科技师范学院"
+            />
+
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

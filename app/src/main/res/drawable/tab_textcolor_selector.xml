@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:state_enabled="false"
+        android:color="@color/fjp_tab_textcolor_normal"/>
+    <!--选中时的字体颜色  -->
+    <item
+        android:state_enabled="true"
+        android:color="@color/radiotextcolor_press"/>
+    <!-- 非触摸模式下获得焦点并单击时的字体颜色 -->
+   <!-- <item
+        android:state_focused="true"
+        android:state_pressed="true"
+        android:color="@color/radiotextcolor_press"/>-->
+</selector>

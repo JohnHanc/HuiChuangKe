@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.android.percent.support.PercentLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@mipmap/jingfen_xiala_bg"
+    android:weightSum="1">
+
+    <TextView
+        android:id="@+id/tv_show"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        app:layout_heightPercent="20%w"
+        android:text="项目分类"
+        android:textSize="20sp"
+        android:gravity="center_vertical"/>
+
+    <GridView
+        android:id="@+id/gl_project_number"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:numColumns="4"
+        android:layout_gravity="center"
+        android:verticalSpacing="10dp"
+        android:horizontalSpacing="10dp"
+        android:stretchMode="columnWidth"
+        android:layout_marginLeft="5dp"
+
+        >
+
+
+    </GridView>
+
+</com.zhy.android.percent.support.PercentLinearLayout>

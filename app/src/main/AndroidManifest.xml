@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.huida">
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -16,8 +15,13 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <!---->
-       <activity android:name=".activity.BaseActivity"/>
+        <!--基类 activity-->
+        <activity android:name=".activity.MineActivity"/>
+        <activity android:name=".activity.DuttActivity"/>
+        <activity android:name=".activity.DynamicActivity"/>
+        <activity android:name=".activity.FindProjectActivity"/>
+        <activity android:name=".activity.FindPersonActivity"/>
+        <activity android:name=".activity.BaseActivity"/>
 
     </application>
 
