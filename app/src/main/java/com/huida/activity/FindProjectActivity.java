@@ -66,11 +66,19 @@ public  class FindProjectActivity extends BaseActivity implements View.OnClickLi
         fragmentList = new ArrayList<>();
         fragmentList.add(new JinFenFragment(this));
         fragmentList.add(new XiFenFragment(this));
+        /**
+         * 传筛选和搜索
+         *
+         */
+        JinFenFragment jf = this.getJingFen();
+        jf.SetSaiXuan(tv_select);
+        jf.SetSearch(iv_search);
+
 
         FragmentManager manager = this.getFragmentManager();
         transaction = manager.beginTransaction();
 
-        transaction.replace(R.id.fpj_fl,fragmentList.get(0));
+        transaction.replace(R.id.fpj_fl,fragmentList.get(1));
         transaction.commit();
     }
 
@@ -121,10 +129,20 @@ public  class FindProjectActivity extends BaseActivity implements View.OnClickLi
                 transaction.replace(R.id.fpj_fl,fragmentList.get(1));
               // transaction.show(fragmentList.get(1));
                 transaction.commit();
+
+
                 break;
             default:
 
                 break;
         }
+    }
+    /**
+     * 获取精分fragment的对象
+     */
+    public JinFenFragment  getJingFen(){
+        JinFenFragment fragment = (JinFenFragment) fragmentList.get(0);
+
+        return  fragment;
     }
 }

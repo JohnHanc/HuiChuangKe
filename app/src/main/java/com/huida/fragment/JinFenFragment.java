@@ -8,6 +8,8 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 
 import com.huida.R;
@@ -37,13 +39,12 @@ public class JinFenFragment extends BaseFragment {
     private ViewPager vp_content;
     private ArrayList<BasePager> pagerList;
     private MagicIndicator mMagic_indicator;
-
+    private TextView tv_saixuan;
+    private ImageView iv_search;
     public JinFenFragment(FindProjectActivity findProjectActivity) {
         super();
 
     }
-
-
 
     @Override
     public View initView() {
@@ -172,4 +173,18 @@ public class JinFenFragment extends BaseFragment {
             container.removeView((View) object);
         }
     }
+    /**
+     * 获取筛选
+     */
+    public void  SetSaiXuan(TextView  tv_saixuan){
+        this.tv_saixuan=tv_saixuan;
+
+    }
+    /**
+     * 获取搜索按钮
+     */
+    public  void  SetSearch(ImageView iv_search){
+        this.iv_search=iv_search;
+    }
+
 }
