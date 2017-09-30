@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="5dp"
+              android:layout_marginBottom="5dp"
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@mipmap/icon"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp">
+
+            <TextView
+                android:id="@+id/recycle_name"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="左耳"
+                android:textColor="#000"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/recycle_city"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="10dp"
+                android:text="秦皇岛"
+                android:textSize="16sp"
+
+                />
+
+            <TextView
+                android:id="@+id/recycle_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/recycle_city"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="5dp"
+                android:lines="3"
+                android:text="正正文正文正文正文正文正文正文正文正文正文正文正文正文正文正文文正文正文正文正文"
+                android:textSize="18sp"
+                />
+
+            <TextView
+                android:id="@+id/recycle_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/recycle_content"
+                android:layout_marginTop="5dp"
+                android:background="@mipmap/ruanjiao1"
+                android:gravity="center"
+                android:text="90后123165"
+                android:textColor="#81BAF7"/>
+
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

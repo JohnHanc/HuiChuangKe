@@ -5,27 +5,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-   >
+    >
+
     <LinearLayout
         android:id="@+id/one"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+
     <LinearLayout
         android:id="@+id/two"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+
     <LinearLayout
         android:id="@+id/three"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+
     <LinearLayout
-    android:id="@+id/four"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"/>
+        android:id="@+id/four"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
     <LinearLayout
-    android:id="@+id/five"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"/>
+        android:id="@+id/five"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
     <LinearLayout
         android:id="@+id/body"
         android:layout_width="match_parent"
@@ -33,14 +39,14 @@
 
 
     <RadioGroup
-        android:layout_alignParentBottom="true"
         android:id="@+id/rg_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#fff"
         android:orientation="horizontal"
         android:padding="5dp"
-        android:background="#fff"
-      >
+        >
 
         <RadioButton
             android:id="@+id/rb_findperson"
@@ -54,28 +60,28 @@
             android:id="@+id/rb_findproject"
             style="@style/Radio_main_style"
             android:drawableTop="@drawable/find_project_selector"
-            android:text="找项目" />
+            android:text="找项目"/>
         />
 
         <RadioButton
             android:id="@+id/rb_dynamic"
             style="@style/Radio_main_style"
             android:drawableTop="@drawable/main_dynamic_selector"
-            android:text="动态" />
+            android:text="动态"/>
         />
 
         <RadioButton
             android:id="@+id/rb_butt"
             style="@style/Radio_main_style"
             android:drawableTop="@drawable/main_butt_joint_selector"
-            android:text="对接" />
+            android:text="对接"/>
         />
 
         <RadioButton
             android:id="@+id/rb_mine"
             style="@style/Radio_main_style"
             android:drawableTop="@drawable/main_mine_selector"
-            android:text="我的" />
+            android:text="我的"/>
 
     </RadioGroup>
 

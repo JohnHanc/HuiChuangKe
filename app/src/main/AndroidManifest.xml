@@ -22,6 +22,16 @@
         <activity android:name=".activity.FindProjectActivity"/>
         <activity android:name=".activity.FindPersonActivity"/>
         <activity android:name=".activity.BaseActivity"/>
+        <activity android:name=".activity.LoginActivity"/>
+        <activity
+            android:name="com.zaaach.citypicker.CityPickerActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/CityPicker.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan"/>
+
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="fdf77e2bb2ed3e0451488267b060d13b"/>
 
     </application>
 
