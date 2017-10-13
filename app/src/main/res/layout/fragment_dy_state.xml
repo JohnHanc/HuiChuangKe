@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.huida.view.MyScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_dystate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/dy_rvbg_selector"></android.support.v7.widget.RecyclerView>
+                <RadioGroup
+                    android:id="@+id/rg_dy_state_art"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="3dp">
+                    <RadioButton
+                        style="@style/Radio_main_style"
+                        android:text="关注"/>
+                    <RadioButton
+                        style="@style/Radio_main_style"
+                        android:text="全部"/>
+                </RadioGroup>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@mipmap/line_gray"/>
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_dys_arts"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+            </LinearLayout>
+        </RelativeLayout>
+    </com.huida.view.MyScrollView>
+
+
+</LinearLayout>

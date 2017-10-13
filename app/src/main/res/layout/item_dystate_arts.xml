@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="15dp">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/iv_dys_icon"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@mipmap/state_bg_pressed"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="8dp">
+                <TextView
+                    android:id="@+id/tv_dys_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="韩东君"
+                    android:textSize="14sp"/>
+                <TextView
+                    android:id="@+id/tv_dys_time"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2017-9-24 发布文章"
+                    android:textSize="12sp"
+                    android:textColor="@color/radiotextcolor_normal"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_dys_title"
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="文章名称************"
+            android:textSize="14sp"/>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_dys_img"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@color/fjp_tab_textcolor_normal"
+        android:layout_marginTop="10dp"/>
+
+</LinearLayout>

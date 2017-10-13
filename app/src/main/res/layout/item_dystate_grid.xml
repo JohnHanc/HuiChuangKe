@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:padding="8dp">
+    <ImageView
+        android:id="@+id/iv_dys_gridicon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/state_all"/>
+    <TextView
+        android:id="@+id/tv_dys_gridtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="全部"
+        android:textSize="14sp"
+        android:layout_marginTop="8dp"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp">
+        <TextView
+            android:id="@+id/tv_dys_gridtoday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="今日**条"
+            android:textSize="12sp"
+            android:textColor="@color/radiotextcolor_normal"/>
+        <TextView
+            android:id="@+id/tv_dys_gridall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="全部**条"
+            android:layout_marginLeft="8dp"
+            android:textSize="12sp"
+            android:textColor="@color/radiotextcolor_normal"/>
+    </LinearLayout>
+
+</LinearLayout>

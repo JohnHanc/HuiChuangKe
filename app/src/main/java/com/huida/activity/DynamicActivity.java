@@ -1,9 +1,19 @@
 package com.huida.activity;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
+import android.util.Log;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import com.huida.R;
+import com.huida.fragment.DyMsgFragment;
+import com.huida.fragment.DyStateFragment;
 
 
 /**
@@ -11,6 +21,13 @@ import com.huida.R;
  */
 
 public  class DynamicActivity extends BaseActivity {
+
+    private RadioButton rb_dy_state;
+    private RadioButton rb_dy_msg;
+    private FrameLayout fl_dy;
+    private RadioGroup rg_dy;
+    private FragmentManager manager=getFragmentManager();;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,16 +41,43 @@ public  class DynamicActivity extends BaseActivity {
 
     @Override
     public void initView() {
-
+        rg_dy = (RadioGroup) findViewById(R.id.rg_dy);
+        rb_dy_state = (RadioButton) findViewById(R.id.rb_dy_state);
+        rb_dy_msg = (RadioButton) findViewById(R.id.rb_dy_msg);
+        fl_dy = (FrameLayout) findViewById(R.id.fl_dy);
     }
 
     @Override
     protected void initData() {
 
+
+        FragmentTransaction ft = manager.beginTransaction();
+
+        ft.replace(R.id.fl_dy, new DyStateFragment()).commit();
+
     }
 
     @Override
     protected void initLisitenr() {
+        rg_dy.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                Log.e("lrs", "onCheckedChanged: ");
+                FragmentTransaction ft = manager.beginTransaction();
+                switch (checkedId){
+                    case R.id.rb_dy_state:
+                        ft.replace(R.id.fl_dy,new DyStateFragment());
+                        break;
+                    case R.id.rb_dy_msg:
+                        ft.replace(R.id.fl_dy,new DyMsgFragment());
+                        break;
+                }
+                ft.commit();
+            }
+        });
 
     }
+
+
+
 }
