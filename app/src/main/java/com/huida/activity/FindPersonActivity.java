@@ -46,7 +46,6 @@ public class FindPersonActivity extends BaseActivity implements View.OnClickList
     private ImageButton mIb_displayall;
 
 
-
 //添加laeble
 
     @Override
@@ -116,7 +115,6 @@ public class FindPersonActivity extends BaseActivity implements View.OnClickList
     public void initData() {
         initMagicIndicator();
         initViewPager();
-        //initAdapter();
     }
 
     @Override
@@ -153,8 +151,6 @@ public class FindPersonActivity extends BaseActivity implements View.OnClickList
         popupWindow.setFocusable(true);
         popupWindow.showAsDropDown(mIb_displayall);
     }
-
-
 }
 
 

@@ -9,5 +9,6 @@
     <color name="radiotextcolor_press">#81BAF7</color>
     <!-- 标签字体颜色-->
     <color name="fjp_tab_textcolor_normal">#343333</color>
-
+    <color name="light">#FFFFFF</color>
+    <color name="dark">#000000</color>
 </resources>

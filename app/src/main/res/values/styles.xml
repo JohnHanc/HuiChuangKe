@@ -13,10 +13,10 @@
         <item name="android:layout_weight">1</item>
 
         <item name="android:layout_height">match_parent</item>
-        <item name="android:drawablePadding">6dp</item>
+        <item name="android:drawablePadding">1dp</item>
         <item name="android:button">@null</item>
         <item name="android:textColor">@drawable/main_radiobutton_textcolor</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">14sp</item>
         <item name="android:gravity">center_horizontal</item>
         <item name="android:drawableBottom">@drawable/rb_butt_title_line_selector</item>
 
