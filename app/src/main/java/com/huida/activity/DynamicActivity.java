@@ -78,6 +78,4 @@ public  class DynamicActivity extends BaseActivity {
 
     }
 
-
-
 }
