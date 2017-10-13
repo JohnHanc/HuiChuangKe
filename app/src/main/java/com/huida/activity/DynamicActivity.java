@@ -75,7 +75,6 @@ public  class DynamicActivity extends BaseActivity {
                 ft.commit();
             }
         });
-
     }
 
 }
