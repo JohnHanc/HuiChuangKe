@@ -30,7 +30,7 @@ import android.widget.ImageView;
 import com.huida.R;
 
 /**
- * Created by Han on 2017/10/12.  2
+ * Created by Han on 2017/10/12.
  */
 
 public class CircleImageView extends ImageView {

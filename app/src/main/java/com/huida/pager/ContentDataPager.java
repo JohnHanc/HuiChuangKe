@@ -99,8 +99,8 @@ public class ContentDataPager extends BasePager {
 
     //回调接口
    /* public static interface OnRecyclerViewItemClickListener {
-        void onItemClick(View view);
-        void onItemLongClick(View view);
+        void onItemClick(View CircleImageView.java);
+        void onItemLongClick(View CircleImageView.java);
     }*/
 
 
