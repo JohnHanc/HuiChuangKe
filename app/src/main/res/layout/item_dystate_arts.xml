@@ -55,7 +55,7 @@
         android:id="@+id/iv_dys_img"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:background="@color/fjp_tab_textcolor_normal"
+        android:background="@color/dark"
         android:layout_marginTop="10dp"/>
 
 </LinearLayout>

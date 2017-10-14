@@ -1,5 +1,6 @@
 package com.huida.activity;
 
+import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
@@ -28,11 +29,7 @@ public  class DynamicActivity extends BaseActivity {
     private RadioGroup rg_dy;
     private FragmentManager manager=getFragmentManager();;
 
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(getLayoutId());
-    }
+
 
     @Override
     protected int getLayoutId() {
@@ -45,14 +42,15 @@ public  class DynamicActivity extends BaseActivity {
         rb_dy_state = (RadioButton) findViewById(R.id.rb_dy_state);
         rb_dy_msg = (RadioButton) findViewById(R.id.rb_dy_msg);
         fl_dy = (FrameLayout) findViewById(R.id.fl_dy);
+
     }
 
     @Override
     protected void initData() {
 
-
         FragmentTransaction ft = manager.beginTransaction();
 
+        rg_dy.check(R.id.rb_dy_state);
         ft.replace(R.id.fl_dy, new DyStateFragment()).commit();
 
     }
@@ -62,7 +60,6 @@ public  class DynamicActivity extends BaseActivity {
         rg_dy.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                Log.e("lrs", "onCheckedChanged: ");
                 FragmentTransaction ft = manager.beginTransaction();
                 switch (checkedId){
                     case R.id.rb_dy_state:
@@ -75,6 +72,8 @@ public  class DynamicActivity extends BaseActivity {
                 ft.commit();
             }
         });
+
     }
+
 
 }
