@@ -11,4 +11,5 @@
     <color name="fjp_tab_textcolor_normal">#343333</color>
     <color name="light">#FFFFFF</color>
     <color name="dark">#000000</color>
+    <color name="lightgray">#eee</color>
 </resources>

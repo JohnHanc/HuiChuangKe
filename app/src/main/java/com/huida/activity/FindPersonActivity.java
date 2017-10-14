@@ -8,6 +8,9 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
+import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.PopupWindow;
 import android.widget.TextView;
@@ -44,6 +47,12 @@ public class FindPersonActivity extends BaseActivity implements View.OnClickList
     private ViewPager mView_pager;
     private TextView mTv_citylocation;
     private ImageButton mIb_displayall;
+    private GridView mPop_gv_all;
+    private TextView mTv_showAllpop;
+    private TextView mTv;
+    private ShowPopAllGridView mShowPopAllGridViewAdapter;
+    private int mLastPosition = -1;
+    private PopupWindow mPopupWindow;
 
 
 //添加laeble
@@ -142,15 +151,68 @@ public class FindPersonActivity extends BaseActivity implements View.OnClickList
     }
 
     private void showPopupWindow() {
-        PopupWindow popupWindow = new PopupWindow(this);
-        popupWindow.setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
-        popupWindow.setHeight(ViewGroup.LayoutParams.MATCH_PARENT);
-        popupWindow.setContentView(LayoutInflater.from(this).inflate(R.layout.layout_popupwindow, null));
-        popupWindow.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#eeeeee")));
-        popupWindow.setOutsideTouchable(false);
-        popupWindow.setFocusable(true);
-        popupWindow.showAsDropDown(mIb_displayall);
+        mPopupWindow = new PopupWindow(this);
+        mPopupWindow.setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
+        mPopupWindow.setHeight(ViewGroup.LayoutParams.MATCH_PARENT);
+        View view = LayoutInflater.from(this).inflate(R.layout.layout_popupwindow, null);
+
+        mPop_gv_all = (GridView) view.findViewById(R.id.gv_all);
+        mShowPopAllGridViewAdapter = new ShowPopAllGridView();
+        mPop_gv_all.setAdapter(mShowPopAllGridViewAdapter);
+        mPop_gv_all.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                mShowPopAllGridViewAdapter.notifyDataSetChanged();
+                if (mLastPosition != -1) {
+                    parent.getChildAt(mLastPosition).setSelected(false);
+                }
+                parent.getChildAt(position).setSelected(true);
+                mLastPosition = position;
+                mView_pager.setCurrentItem(position);
+                mPopupWindow.dismiss();
+            }
+        });
+        mPopupWindow.setContentView(view);
+        mPopupWindow.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#ffffff")));
+        mPopupWindow.setOutsideTouchable(false);
+        mPopupWindow.setFocusable(true);
+        mPopupWindow.showAsDropDown(mIb_displayall);
     }
+
+
+    class ShowPopAllGridView extends BaseAdapter {
+
+
+        @Override
+        public int getCount() {
+            return 10;
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return null;
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return 0;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            convertView = LayoutInflater.from(FindPersonActivity.this).inflate(R.layout.gridview_popitem, null);
+
+            mTv_showAllpop = (TextView) convertView.findViewById(R.id.tv_showAllpop);
+            mTv_showAllpop.setText("电子商务啊");
+
+            if (position == mLastPosition) {
+                mTv_showAllpop.setSelected(true);
+                mLastPosition = position;
+            }
+            return convertView;
+        }
+    }
+
 }
 
 
