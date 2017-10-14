@@ -83,7 +83,6 @@ public class MainActivity extends ActivityGroup {
                 switch (i){
                     case R.id.rb_findperson:
                     showView(0);
-
                         break;
                     case R.id.rb_findproject:
                         showView(1);

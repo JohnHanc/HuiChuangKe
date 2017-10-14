@@ -11,7 +11,9 @@ import android.widget.TextView;
 
 import com.huida.R;
 import com.huida.activity.FindProjectActivity;
+import com.huida.adapter.XiFenViewPager;
 import com.huida.pager.BasePager;
+import com.huida.pager.ZaoMengShiPager;
 
 import net.lucode.hackware.magicindicator.MagicIndicator;
 import net.lucode.hackware.magicindicator.ViewPagerHelper;
@@ -20,6 +22,8 @@ import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.CommonNav
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerIndicator;
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerTitleView;
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.titles.ClipPagerTitleView;
+
+import java.util.ArrayList;
 
 /**
  * Created by liling on 2017/9/25.
@@ -30,6 +34,7 @@ public class XiFenFragment extends BaseFragment {
     private MagicIndicator indicator;
     private ViewPager xifen_vp;
     private String[] titils;
+    private ArrayList<BasePager> pagerlist;
 
     public XiFenFragment(FindProjectActivity findProjectActivity) {
         super();
@@ -48,6 +53,11 @@ public class XiFenFragment extends BaseFragment {
     public void initData() {
         super.initData();
         titils = new String[]{"造梦师","造梦师","造梦师","造梦师"};
+        pagerlist = new ArrayList<>();
+        for (int i = 0; i <titils.length ; i++) {
+
+            pagerlist.add(new ZaoMengShiPager(mActivity));
+        }
         initMagicIndicator();
         initViewPager();
 
@@ -92,12 +102,13 @@ public class XiFenFragment extends BaseFragment {
         ViewPagerHelper.bind(indicator, xifen_vp);
     }
     private void initViewPager() {
-        MyViewpagerAdapter viewPagerAdapter = new MyViewpagerAdapter();
-        xifen_vp.setAdapter(viewPagerAdapter);
+        XiFenViewPager xiFenViewPager = new XiFenViewPager(mActivity,titils);
+        xifen_vp.setAdapter(xiFenViewPager);
+        xifen_vp.setCurrentItem(0);
         xifen_vp.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                //pagerList.get(position).initData();
+
             }
 
             @Override
@@ -114,31 +125,5 @@ public class XiFenFragment extends BaseFragment {
 
     }
 
-    private class MyViewpagerAdapter extends PagerAdapter {
-        @Override
-        public int getCount() {
 
-            return  4;
-        }
-
-        @Override
-        public boolean isViewFromObject(View view, Object object) {
-            return view==object;
-        }
-
-        @Override
-        public Object instantiateItem(ViewGroup container, int position) {
-
-            View view = View.inflate(mActivity,R.layout.xinfen_vp_layout,null);
-
-            container.addView(view);
-
-            return view;
-        }
-
-        @Override
-        public void destroyItem(ViewGroup container, int position, Object object) {
-            container.removeView((View) object);
-        }
-    }
 }

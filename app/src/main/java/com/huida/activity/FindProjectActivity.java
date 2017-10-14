@@ -3,6 +3,7 @@ package com.huida.activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
@@ -24,7 +25,7 @@ import java.util.ArrayList;
  * Created by liling on 2017/9/24.
  */
 
-public  class FindProjectActivity extends BaseActivity implements View.OnClickListener{
+public  class FindProjectActivity extends BaseActivity {
 
     private FrameLayout fg_fpj;
     private RadioGroup rg_title;
@@ -34,12 +35,6 @@ public  class FindProjectActivity extends BaseActivity implements View.OnClickLi
     private FragmentTransaction transaction;
     private RadioButton rb_jinfen;
     private RadioButton rb_xifen;
-
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-       setContentView(getLayoutId());
-    }
 
     @Override
     protected int getLayoutId() {
@@ -54,9 +49,7 @@ public  class FindProjectActivity extends BaseActivity implements View.OnClickLi
         iv_search = (ImageView) findViewById(R.id.iv_jingfen_search);
         rb_jinfen = (RadioButton) findViewById(R.id.rb_fpj_jinfen);
         rb_xifen = (RadioButton) findViewById(R.id.rb_fpj_xifen);
-//        rg_title.setOnCheckedChangeListener(this);
-        rb_jinfen.setOnClickListener(this);
-        rb_xifen.setOnClickListener(this);
+
 
     }
 
@@ -80,63 +73,35 @@ public  class FindProjectActivity extends BaseActivity implements View.OnClickLi
 
         transaction.replace(R.id.fpj_fl,fragmentList.get(1));
         transaction.commit();
+        initLisitenr();
     }
 
     @Override
     protected void initLisitenr() {
         Log.e("liling", "initLisitenr: "+"rgggg" );
+        rg_title.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+                transaction = FindProjectActivity.this.getFragmentManager().beginTransaction();
+                switch (i){
+                    case  R.id.rb_fpj_jinfen:
+                        Log.e("liling", "initLisitenr: "+"rg1" );
+                        transaction.replace(R.id.fpj_fl,fragmentList.get(0));
+                        break;
+                    case  R.id.rb_fpj_xifen:
+                        Log.e("liling", "initLisitenr: "+"rg2" );
+                        transaction.replace(R.id.fpj_fl,fragmentList.get(1));
+                        break;
+                    default:
+                        break;
+                }
+                transaction.commit();
+
+            }
+        });
 
 }
 
-   /* @Override
-    public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
-        switch (i){
-            case  R.id.rb_fpj_jinfen:
-                Log.e("liling", "initLisitenr: "+"rg1" );
-                transaction.hide(fragmentList.get(1));
-                transaction.replace(R.id.fpj_fl,fragmentList.get(0));
-                transaction.show(fragmentList.get(0));
-                transaction.commit();
-                break;
-            case  R.id.rb_fpj_xifen:
-                Log.e("liling", "initLisitenr: "+"rg2" );
-                transaction.hide(fragmentList.get(0));
-                transaction.replace(R.id.fpj_fl,fragmentList.get(1));
-                transaction.show(fragmentList.get(1));
-                transaction.commit();
-                break;
-            default:
-
-                break;
-        }
-    }*/
-
-    @Override
-    public void onClick(View view) {
-        FragmentManager fragmentManager = FindProjectActivity.this.getFragmentManager();
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        switch (view.getId()){
-            case  R.id.rb_fpj_jinfen:
-                Log.e("liling", "initLisitenr: "+"rg1" );
-               // transaction.hide(fragmentList.get(1));
-                transaction.replace(R.id.fpj_fl,fragmentList.get(0));
-               // transaction.show(fragmentList.get(0));
-               transaction.commit();
-                break;
-            case  R.id.rb_fpj_xifen:
-                Log.e("liling", "initLisitenr: "+"rg2" );
-               // transaction.hide(fragmentList.get(0));
-                transaction.replace(R.id.fpj_fl,fragmentList.get(1));
-              // transaction.show(fragmentList.get(1));
-                transaction.commit();
-
-
-                break;
-            default:
-
-                break;
-        }
-    }
     /**
      * 获取精分fragment的对象
      */

@@ -15,5 +15,6 @@ public abstract  class BasePager  {
     }
     public abstract View initView();
     public abstract  void  initData();
+    public  void  initListener(){};
 
 }

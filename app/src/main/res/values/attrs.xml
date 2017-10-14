@@ -8,4 +8,16 @@
         <attr name="civ_fill_color" format="color"/>
         <attr name="civ_circle_background_color" format="color"/>
     </declare-styleable>
+    <declare-styleable name="divder">
+        <attr name="_drawBound" format="boolean" />
+        <attr name="_thickness" format="dimension" />
+        <attr name="_dividerPadding" format="dimension" />
+        <attr name="_dividerColor" format="color" />
+        <attr name="_orientation" format="enum">
+            <enum name="horizontal" value="0" />
+            <enum name="vertical" value="1" />
+            <enum name="grid" value="2" /> </attr>
+        <attr name="_grid_col_num" format="integer" />
+    </declare-styleable>
+
 </resources>

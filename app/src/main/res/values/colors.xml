@@ -7,9 +7,14 @@
 
     <color name="radiotextcolor_normal">#7F7F7F</color>
     <color name="radiotextcolor_press">#81BAF7</color>
+    <color name="textview_bg_color">#ededed</color>
     <!-- 标签字体颜色-->
     <color name="fjp_tab_textcolor_normal">#343333</color>
     <color name="light">#FFFFFF</color>
     <color name="dark">#000000</color>
+    <!--省份背景颜色-->
+    <color name="provinces_press">#eee</color>
+    <color name="provinces_normal">#fff</color>
+
     <color name="lightgray">#eee</color>
 </resources>

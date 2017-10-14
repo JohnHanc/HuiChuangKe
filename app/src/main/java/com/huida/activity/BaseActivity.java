@@ -13,7 +13,6 @@ public abstract class BaseActivity extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(getLayoutId());
         Log.e("liling", "onCreate: "+getLayoutId() );
         initView();
@@ -22,13 +21,13 @@ public abstract class BaseActivity extends Activity {
 
     }
 
-
-
     @Override
     protected void onStart() {
         super.onStart();
+      //  initData();
         initLisitenr();
     }
+
 
     protected abstract int getLayoutId();
 

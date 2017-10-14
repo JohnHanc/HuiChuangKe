@@ -45,6 +45,9 @@
             android:name="com.amap.api.v2.apikey"
             android:value="fdf77e2bb2ed3e0451488267b060d13b"/>
 
+
+
     </application>
+
 
 </manifest>

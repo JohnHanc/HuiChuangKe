@@ -2,18 +2,27 @@ package com.huida.fragment;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.support.v4.view.PagerAdapter;
+import android.graphics.drawable.ColorDrawable;
+
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.huida.R;
 import com.huida.activity.FindProjectActivity;
+import com.huida.adapter.MyViewpagerAdapter;
+import com.huida.adapter.PopRecycleViewAdapter;
+import com.huida.adapter.XiFenRecycleAdapter;
 import com.huida.pager.BasePager;
 import com.huida.pager.ContentDataPager;
 
@@ -34,6 +43,7 @@ import java.util.List;
 
 public class JinFenFragment extends BaseFragment {
 
+    private final FindProjectActivity findProjectActivity;
     private List<String> strings;
     private RecyclerView rl;
     private ViewPager vp_content;
@@ -41,16 +51,24 @@ public class JinFenFragment extends BaseFragment {
     private MagicIndicator mMagic_indicator;
     private TextView tv_saixuan;
     private ImageView iv_search;
+    private ImageView iv_list;
+    private LinearLayout title_label;
+    private PopRecycleViewAdapter adapter;
+
     public JinFenFragment(FindProjectActivity findProjectActivity) {
+
         super();
+        this.findProjectActivity=findProjectActivity;
 
     }
 
     @Override
     public View initView() {
         View view = View.inflate(mActivity, R.layout.fpj_jingfen_layout,null);
+        title_label = (LinearLayout) view.findViewById(R.id.title_label);
         mMagic_indicator = (MagicIndicator) view.findViewById(R.id.magic_indicator);
         vp_content = (ViewPager) view.findViewById(R.id.vp_jingfen_content);
+        iv_list = (ImageView) view.findViewById(R.id.iv_fpj_list);
         return view;
     }
 
@@ -82,8 +100,20 @@ public class JinFenFragment extends BaseFragment {
         initMagicIndicator();
         //初始化viewpager
         initViewPager();
+        initListener();
     }
-   //添加laeble
+
+    private void initListener() {
+        iv_list.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //展示popupwindow
+                initPup();
+            }
+        });
+    }
+
+    //添加laeble
     private void initMagicIndicator() {
         CommonNavigator commonNavigator = new CommonNavigator(mActivity);
         commonNavigator.setSkimOver(true);
@@ -122,17 +152,19 @@ public class JinFenFragment extends BaseFragment {
         ViewPagerHelper.bind(mMagic_indicator, vp_content);
     }
     private void initViewPager() {
-        MyViewpagerAdapter viewPagerAdapter = new MyViewpagerAdapter();
+        MyViewpagerAdapter viewPagerAdapter = new MyViewpagerAdapter(mActivity,strings);
         vp_content.setAdapter(viewPagerAdapter);
         vp_content.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
                 //pagerList.get(position).initData();
+
             }
 
             @Override
             public void onPageSelected(int position) {
-                pagerList.get(position).initData();
+
+
             }
 
             @Override
@@ -143,36 +175,47 @@ public class JinFenFragment extends BaseFragment {
 
     }
 
-    private class MyViewpagerAdapter extends PagerAdapter {
-        @Override
-        public int getCount() {
-            return  pagerList.size();
-        }
+    /**
+     * 初始化popupwindow
+     */
+    public  void  initPup(){
+         PopupWindow popupWindow = new PopupWindow(findProjectActivity);
+        popupWindow.setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
+        popupWindow.setHeight(ViewGroup.LayoutParams.MATCH_PARENT);
+        View contentview = LayoutInflater.from(mActivity).inflate(R.layout.layout_popupwindow_jingfen, null);
+        popupWindow.setContentView(contentview);
+         RecyclerView rl_popwpwind = (RecyclerView) contentview.findViewById(R.id.rl_popupwind);
+        final String[] data={"全部","电子商务","社交","工具","移动应用","O2O","企业服务",
+                "全部","电子商务","社交","工具","移动应用","O2O","企业服务"};
+        rl_popwpwind.setLayoutManager(new GridLayoutManager(mActivity, 4));
 
-        @Override
-        public boolean isViewFromObject(View view, Object object) {
-            return view==object;
-        }
 
-        @Override
-        public Object instantiateItem(ViewGroup container, int position) {
+            adapter = new PopRecycleViewAdapter(findProjectActivity, data);
+            rl_popwpwind.setAdapter(adapter);
+            adapter.setOnItemClickListener(new XiFenRecycleAdapter.OnRecyclerViewItemClickListener() {
+                @Override
+                public void onItemClick(View view) {
 
-            BasePager pager = pagerList.get(position);
+                }
 
-            View view = pager.initView();
-            Log.e("iiii", "instantiateItem: "+view );
-            Log.e("iii", "instantiateItem: "+position );
+                @Override
+                public void onItemLongClick(View view) {
 
-            container.addView(view);
+                }
 
-            return view;
-        }
+                @Override
+                public void onItemClick(View view, int tag) {
+                    Toast.makeText(findProjectActivity,data[tag],699).show();
+                }
+            });
 
-        @Override
-        public void destroyItem(ViewGroup container, int position, Object object) {
-            container.removeView((View) object);
-        }
+        popupWindow.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#eeeeee")));
+        popupWindow.setOutsideTouchable(false);
+        popupWindow.setFocusable(true);
+        popupWindow.showAsDropDown(title_label);
     }
+
+
     /**
      * 获取筛选
      */

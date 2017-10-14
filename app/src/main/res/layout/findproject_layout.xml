@@ -46,7 +46,7 @@
                 style="@style/Radio_main_style"
                 android:checked="true"
                 android:text="精分"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:drawableBottom="@drawable/line_blue"
                 android:drawablePadding="4dp"
                 android:gravity="center"/>
@@ -57,7 +57,7 @@
                 android:layout_width="0dp"
                 android:text="细分"
                 android:gravity="center"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
         </RadioGroup>
         <ImageView
             android:id="@+id/iv_jingfen_search"

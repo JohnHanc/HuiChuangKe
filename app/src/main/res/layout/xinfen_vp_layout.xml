@@ -5,16 +5,20 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_gravity="center"
-        >
+        android:layout_gravity="center">
+
+
         <TextView
-            android:id="@+id/tv_all"
+                android:id="@+id/tv_all"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:textSize="18sp"
             android:gravity="center"
-            android:text="全部"/>
+            android:text="地区"
+            android:enabled="true"
+            android:background="@drawable/xifen_lable_selector"
+           />
         <TextView
             android:id="@+id/tv_zijin"
             android:layout_width="0dp"
@@ -22,7 +26,11 @@
             android:textSize="18sp"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="资金"/>
+            android:text="资金"
+            android:clickable="true"
+            android:background="@drawable/xifen_lable_selector"
+
+           />
         <TextView
             android:id="@+id/tv_zaohuan"
             android:layout_width="0dp"
@@ -30,24 +38,29 @@
             android:textSize="18sp"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="召唤"/>
+            android:text="召唤"
+           android:clickable="true"
+            android:background="@drawable/xifen_lable_selector"
+
+           />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="match_parent"
         android:orientation="horizontal">
+
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/rl_city"
-            android:layout_width="0dp"
-            android:layout_weight="1"
+            android:id="@+id/rl_provinces"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent">
         </android.support.v7.widget.RecyclerView>
-        <EditText
-            android:id="@+id/et_show"
-            android:layout_width="0dp"
-            android:layout_weight="2"
-            android:layout_height="match_parent" />
+       <android.support.v7.widget.RecyclerView
+           android:id="@+id/rl_city"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent">
 
+       </android.support.v7.widget.RecyclerView>
     </LinearLayout>
+
 </LinearLayout>
