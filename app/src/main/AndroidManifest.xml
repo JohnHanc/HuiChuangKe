@@ -37,6 +37,7 @@
 
         </activity>
         <activity android:name=".activity.ClipActivity"/>
+        <activity android:name=".activity.ChatActivity"/>
         <activity
             android:name="com.zaaach.citypicker.CityPickerActivity"
             android:screenOrientation="portrait"

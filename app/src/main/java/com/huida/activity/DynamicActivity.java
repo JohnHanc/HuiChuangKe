@@ -1,13 +1,8 @@
 package com.huida.activity;
 
-import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.os.Bundle;
 import android.support.annotation.IdRes;
-import android.support.annotation.Nullable;
-import android.util.Log;
-import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -15,6 +10,7 @@ import android.widget.RadioGroup;
 import com.huida.R;
 import com.huida.fragment.DyMsgFragment;
 import com.huida.fragment.DyStateFragment;
+import com.huida.fragment.DynamicFragment;
 
 
 /**
@@ -23,11 +19,10 @@ import com.huida.fragment.DyStateFragment;
 
 public  class DynamicActivity extends BaseActivity {
 
-    private RadioButton rb_dy_state;
-    private RadioButton rb_dy_msg;
+
     private FrameLayout fl_dy;
-    private RadioGroup rg_dy;
-    private FragmentManager manager=getFragmentManager();;
+
+    private FragmentManager manager=getFragmentManager();
 
 
 
@@ -38,10 +33,8 @@ public  class DynamicActivity extends BaseActivity {
 
     @Override
     public void initView() {
-        rg_dy = (RadioGroup) findViewById(R.id.rg_dy);
-        rb_dy_state = (RadioButton) findViewById(R.id.rb_dy_state);
-        rb_dy_msg = (RadioButton) findViewById(R.id.rb_dy_msg);
-        fl_dy = (FrameLayout) findViewById(R.id.fl_dy);
+
+        fl_dy = (FrameLayout) findViewById(R.id.fl_dymic);
 
     }
 
@@ -50,28 +43,12 @@ public  class DynamicActivity extends BaseActivity {
 
         FragmentTransaction ft = manager.beginTransaction();
 
-        rg_dy.check(R.id.rb_dy_state);
-        ft.replace(R.id.fl_dy, new DyStateFragment()).commit();
+        ft.add(R.id.fl_dymic, new DynamicFragment()).commit();
 
     }
 
     @Override
     protected void initLisitenr() {
-        rg_dy.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                FragmentTransaction ft = manager.beginTransaction();
-                switch (checkedId){
-                    case R.id.rb_dy_state:
-                        ft.replace(R.id.fl_dy,new DyStateFragment());
-                        break;
-                    case R.id.rb_dy_msg:
-                        ft.replace(R.id.fl_dy,new DyMsgFragment());
-                        break;
-                }
-                ft.commit();
-            }
-        });
 
     }
 

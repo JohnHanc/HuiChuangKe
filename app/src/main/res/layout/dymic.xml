@@ -1,65 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/fl_dymic">
-    <LinearLayout
+    android:layout_height="match_parent">
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context="com.huida.activity.MainActivity">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="3dp">
-
-            <ImageButton
-                android:id="@+id/ib_dy_found"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@mipmap/state_found"/>
-            <RadioGroup
-                android:id="@+id/rg_dy"
-                android:layout_centerInParent="true"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <RadioButton
-                    android:id="@+id/rb_dy_state"
-                    style="@style/Radio_main_style"
-                    android:text="动态"/>
-                <RadioButton
-                    android:id="@+id/rb_dy_msg"
-                    style="@style/Radio_main_style"
-                    android:text="消息"/>
-            </RadioGroup>
-
-            <ImageButton
-                android:id="@+id/ib_dy_more"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@mipmap/state_create"
-                android:layout_alignParentRight="true"/>
-
-        </RelativeLayout>
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@mipmap/line_gray"/>
-
-        <FrameLayout
-            android:id="@+id/fl_dy"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"></FrameLayout>
-
-    </LinearLayout>
-
-</FrameLayout>
-
+        android:id="@+id/fl_dymic">
+    </FrameLayout>
+</LinearLayout>
