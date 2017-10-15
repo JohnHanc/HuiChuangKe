@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@color/liji_c_blue" android:state_selected="true"/>
-    <item android:drawable="@color/lightgray" android:state_selected="false"/>
+    <item android:drawable="@drawable/fpj_rectangle_shape" android:state_selected="true"/>
+    <item android:drawable="@drawable/fpj_rectangle_shape_normal" android:state_selected="false"/>
 
 </selector>

@@ -116,6 +116,7 @@ public class GuideActivity extends BaseActivity {
                 startActivity(intent);
                 //}
                 overridePendingTransition(0, 0);
+                finish();
             }
 
             @Override

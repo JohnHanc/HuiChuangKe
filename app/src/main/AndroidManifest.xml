@@ -13,7 +13,11 @@
         android:supportsRtl="true"
         android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen">
         <activity android:name=".activity.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
 
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
         <!--基类 activity-->
         <activity android:name=".activity.MineActivity"/>
@@ -23,14 +27,12 @@
         <activity android:name=".activity.FindPersonActivity"/>
         <activity android:name=".activity.BaseActivity"/>
         <activity android:name=".activity.LoginActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
 
         </activity>
-        <activity android:name=".activity.GuideActivity"/>
+        <activity android:name=".activity.GuideActivity">
+
+        </activity>
         <activity android:name=".activity.TestActivity">
 
         </activity>

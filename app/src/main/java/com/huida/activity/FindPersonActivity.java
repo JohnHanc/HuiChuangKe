@@ -39,7 +39,7 @@ public class FindPersonActivity extends BaseActivity implements View.OnClickList
 
     private static final int REQUEST_CODE_PICK_CITY = 0;
     //添加tab数据
-    private String[] titles = new String[]{"全部", "技术合伙人", "营销合伙人", "运营合伙人", "韩超宇"};
+    private String[] titles = new String[]{"全部", "技术合伙人", "营销合伙人", "运营合伙人", "韩超宇", "1", "1", "1", "1", "1"};
     private List<String> mDataList = Arrays.asList(titles);
 
 
@@ -124,6 +124,7 @@ public class FindPersonActivity extends BaseActivity implements View.OnClickList
     public void initData() {
         initMagicIndicator();
         initViewPager();
+        mShowPopAllGridViewAdapter = new ShowPopAllGridView();
     }
 
     @Override
@@ -134,6 +135,23 @@ public class FindPersonActivity extends BaseActivity implements View.OnClickList
     private void initViewPager() {
         FindPersonViewPagerAdapter viewPagerAdapter = new FindPersonViewPagerAdapter(mDataList, this);
         mView_pager.setAdapter(viewPagerAdapter);
+        mView_pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                mLastPosition = position;
+                mShowPopAllGridViewAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 
     @Override
@@ -155,9 +173,7 @@ public class FindPersonActivity extends BaseActivity implements View.OnClickList
         mPopupWindow.setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
         mPopupWindow.setHeight(ViewGroup.LayoutParams.MATCH_PARENT);
         View view = LayoutInflater.from(this).inflate(R.layout.layout_popupwindow, null);
-
         mPop_gv_all = (GridView) view.findViewById(R.id.gv_all);
-        mShowPopAllGridViewAdapter = new ShowPopAllGridView();
         mPop_gv_all.setAdapter(mShowPopAllGridViewAdapter);
         mPop_gv_all.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
