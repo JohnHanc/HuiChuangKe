@@ -11,6 +11,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
@@ -19,6 +23,8 @@ import android.widget.Toast;
 
 
 import com.huida.R;
+import com.huida.activity.DuttActivity;
+import com.huida.activity.FindPersonActivity;
 import com.huida.activity.FindProjectActivity;
 import com.huida.adapter.MyViewpagerAdapter;
 import com.huida.adapter.PopRecycleViewAdapter;
@@ -43,17 +49,20 @@ import java.util.List;
 
 public class JinFenFragment extends BaseFragment {
 
+    private static final String TAG = "liling";
     private final FindProjectActivity findProjectActivity;
     private List<String> strings;
     private RecyclerView rl;
     private ViewPager vp_content;
     private ArrayList<BasePager> pagerList;
     private MagicIndicator mMagic_indicator;
-    private TextView tv_saixuan;
+
     private ImageView iv_search;
     private ImageView iv_list;
     private LinearLayout title_label;
     private PopRecycleViewAdapter adapter;
+    private  int mLastPosition=-1;
+    private ShowPopAllGridView showPopAllGridView;
 
     public JinFenFragment(FindProjectActivity findProjectActivity) {
 
@@ -92,7 +101,7 @@ public class JinFenFragment extends BaseFragment {
         strings.add("企业服务");
         pagerList = new ArrayList<>();
         for (int i = 0; i <strings.size() ; i++) {
-            pagerList.add(new ContentDataPager(mActivity));
+            pagerList.add(new ContentDataPager(findProjectActivity));
         }
         Log.e("iii", "initData: "+pagerList.size() );
         vp_content.setCurrentItem(0);
@@ -101,6 +110,7 @@ public class JinFenFragment extends BaseFragment {
         //初始化viewpager
         initViewPager();
         initListener();
+
     }
 
     private void initListener() {
@@ -115,7 +125,7 @@ public class JinFenFragment extends BaseFragment {
 
     //添加laeble
     private void initMagicIndicator() {
-        CommonNavigator commonNavigator = new CommonNavigator(mActivity);
+        CommonNavigator commonNavigator = new CommonNavigator(findProjectActivity);
         commonNavigator.setSkimOver(true);
         commonNavigator.setAdapter(new CommonNavigatorAdapter() {
             @Override
@@ -152,18 +162,20 @@ public class JinFenFragment extends BaseFragment {
         ViewPagerHelper.bind(mMagic_indicator, vp_content);
     }
     private void initViewPager() {
-        MyViewpagerAdapter viewPagerAdapter = new MyViewpagerAdapter(mActivity,strings);
+        MyViewpagerAdapter viewPagerAdapter = new MyViewpagerAdapter(findProjectActivity,strings);
         vp_content.setAdapter(viewPagerAdapter);
         vp_content.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
                 //pagerList.get(position).initData();
 
+
             }
 
             @Override
             public void onPageSelected(int position) {
-
+                mLastPosition = position;
+                showPopAllGridView.notifyDataSetChanged();
 
             }
 
@@ -179,33 +191,29 @@ public class JinFenFragment extends BaseFragment {
      * 初始化popupwindow
      */
     public  void  initPup(){
-         PopupWindow popupWindow = new PopupWindow(findProjectActivity);
+         final PopupWindow popupWindow = new PopupWindow(findProjectActivity);
         popupWindow.setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
         popupWindow.setHeight(ViewGroup.LayoutParams.MATCH_PARENT);
         View contentview = LayoutInflater.from(mActivity).inflate(R.layout.layout_popupwindow_jingfen, null);
         popupWindow.setContentView(contentview);
-         RecyclerView rl_popwpwind = (RecyclerView) contentview.findViewById(R.id.rl_popupwind);
+         GridView rl_popwpwind = (GridView) contentview.findViewById(R.id.gv_all);
         final String[] data={"全部","电子商务","社交","工具","移动应用","O2O","企业服务",
                 "全部","电子商务","社交","工具","移动应用","O2O","企业服务"};
-        rl_popwpwind.setLayoutManager(new GridLayoutManager(mActivity, 4));
-
-
-            adapter = new PopRecycleViewAdapter(findProjectActivity, data);
-            rl_popwpwind.setAdapter(adapter);
-            adapter.setOnItemClickListener(new XiFenRecycleAdapter.OnRecyclerViewItemClickListener() {
+//        final GridLayoutManager layoutManager = new GridLayoutManager(mActivity, 4);
+//        rl_popwpwind.setLayoutManager(layoutManager);
+          //  adapter = new PopRecycleViewAdapter(findProjectActivity, data);
+            showPopAllGridView = new ShowPopAllGridView(data);
+            rl_popwpwind.setAdapter(showPopAllGridView);
+            rl_popwpwind.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
-                public void onItemClick(View view) {
-
-                }
-
-                @Override
-                public void onItemLongClick(View view) {
-
-                }
-
-                @Override
-                public void onItemClick(View view, int tag) {
-                    Toast.makeText(findProjectActivity,data[tag],699).show();
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    if (mLastPosition != -1) {
+                        adapterView.getChildAt(mLastPosition).setSelected(false);
+                    }
+                    adapterView.getChildAt(i).setSelected(true);
+                    mLastPosition = i;
+                    vp_content.setCurrentItem(i);
+                    popupWindow.dismiss();
                 }
             });
 
@@ -215,14 +223,47 @@ public class JinFenFragment extends BaseFragment {
         popupWindow.showAsDropDown(title_label);
     }
 
+    class ShowPopAllGridView extends BaseAdapter {
 
-    /**
-     * 获取筛选
-     */
-    public void  SetSaiXuan(TextView  tv_saixuan){
-        this.tv_saixuan=tv_saixuan;
 
+        private final String[] data;
+        private TextView mTv_showAllpop;
+
+        public ShowPopAllGridView(String[] data) {
+            this.data=data;
+        }
+
+        @Override
+        public int getCount() {
+            return 10;
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return null;
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return 0;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            convertView = LayoutInflater.from(findProjectActivity).inflate(R.layout.gridview_popitem, null);
+
+            mTv_showAllpop = (TextView) convertView.findViewById(R.id.tv_showAllpop);
+            mTv_showAllpop.setText(data[position]);
+
+
+            if (position == mLastPosition) {
+                mTv_showAllpop.setSelected(true);
+                mLastPosition = position;
+            }
+            return convertView;
+        }
     }
+
     /**
      * 获取搜索按钮
      */

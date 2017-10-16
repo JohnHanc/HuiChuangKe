@@ -3,15 +3,19 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="6dp"
+    android:background="#fff"
+    android:clickable="true"
     >
     <Button
         android:id="@+id/bt_item"
         android:layout_width="0dp"
+
         android:layout_weight="1"
         android:layout_height="40dp"
         android:layout_margin="4dp"
         android:layout_gravity="center"
-        android:background="@drawable/jingfen_pupwind_rectangle_shape"
-        android:textColor="@drawable/main_radiobutton_textcolor" />
+        android:background="@drawable/popuptext_groud_selector"
+        android:textColor="@drawable/popuptext_selector"
+       />
 
 </LinearLayout>

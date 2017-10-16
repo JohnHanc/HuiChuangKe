@@ -14,24 +14,12 @@
         android:orientation="horizontal"
        >
 
-        <TextView
-            android:id="@+id/tv_jingfen_saixuan"
-            android:layout_width="0dp"
-            android:layout_weight="0.5"
-            android:layout_height="match_parent"
-           android:gravity="center_vertical"
-            android:layout_marginLeft="10dp"
-            android:drawableRight="@mipmap/more"
-            android:drawablePadding="3dp"
-            android:text="筛选"
-            android:textSize="20sp"
 
-            android:visibility="visible"/>
 
         <RadioGroup
             android:id="@+id/rg_fpj_title"
             android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_weight="3"
             android:layout_height="match_parent"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
@@ -47,7 +35,7 @@
                 android:checked="true"
                 android:text="精分"
                 android:textSize="18sp"
-                android:drawableBottom="@drawable/line_blue"
+                android:drawableBottom="@drawable/rb_butt_title_line_selector"
                 android:drawablePadding="4dp"
                 android:gravity="center"/>
 
@@ -57,7 +45,9 @@
                 android:layout_width="0dp"
                 android:text="细分"
                 android:gravity="center"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:drawablePadding="4dp"
+                android:drawableBottom="@drawable/rb_butt_title_line_selector"/>
         </RadioGroup>
         <ImageView
             android:id="@+id/iv_jingfen_search"
@@ -78,14 +68,14 @@
 
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.5"
+        android:layout_weight="1"
         android:background="@mipmap/jingfen_xiala_bg"/>
     <FrameLayout
         android:id="@+id/fpj_fl"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
-        android:background="#fff">
+        android:background="#fff"
+        >
 
     </FrameLayout>
 

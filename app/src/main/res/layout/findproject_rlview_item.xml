@@ -7,62 +7,60 @@
     android:padding="5dp"
     android:layout_marginTop="20dp"
     >
+
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="5"
-        android:orientation="horizontal"
-        android:layout_gravity="center_vertical"
-        >
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
         <ImageView
             android:id="@+id/iv_fpj_image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@mipmap/circle_image"
-            />
+            android:background="@mipmap/circle_image" />
         <!--个人介绍情况-->
         <RelativeLayout
-
-            android:layout_width="0dp"
-            android:layout_weight="8"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="5dp"
             android:gravity="center"
+            android:padding="5dp"
 
             >
+
             <TextView
                 android:id="@+id/rl_item_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ID教育培训"
-                android:textSize="20sp"
-                android:textColor="#000"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginLeft="5dp"/>
+                android:layout_marginLeft="5dp"
+                android:text="ID教育培训"
+                android:textColor="#000"
+                android:textSize="18sp" />
+
             <TextView
                 android:id="@+id/rl_item_place"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="秦皇岛"
-                android:textSize="15sp"
-                android:textColor="#7F7F7F"
-                android:layout_alignParentTop="true"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="5dp"/>
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="5dp"
+                android:text="秦皇岛"
+                android:textColor="#7F7F7F"
+                android:textSize="12sp" />
+
             <TextView
                 android:id="@+id/rl_item_brief"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="自己创立自己创立自己创立"
-                android:textSize="20sp"
-                android:textColor="#7f7f7f"
+                android:layout_alignLeft="@id/rl_item_title"
                 android:layout_below="@id/rl_item_title"
-                android:layout_alignLeft="@id/rl_item_title"/>
+                android:text="自己创立自己创立自己创立"
+                android:textColor="#7f7f7f"
+                android:textSize="16sp" />
         </RelativeLayout>
-        </LinearLayout>
-
-
+    </LinearLayout>
 
 
     <!--个人标签-->
@@ -71,10 +69,10 @@
     <LinearLayout
         android:id="@+id/fpj_item_person_lable"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center">
+        android:gravity="center"
+        android:layout_marginTop="10dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -95,8 +93,7 @@
     <LinearLayout
         android:id="@+id/fpj_item_project_label"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
         android:layout_marginTop="10dp"

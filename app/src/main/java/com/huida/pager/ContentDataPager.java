@@ -61,7 +61,6 @@ public class ContentDataPager extends BasePager {
     private class RecycleItemAdapter extends RecyclerView.Adapter<RecycleItemAdapter.Holder> {
         @Override
         public Holder onCreateViewHolder(ViewGroup parent, int viewType) {
-            Log.e("ccc", "onCreateViewHolder: "+"创建rl条目" );
             View view = LayoutInflater.from(mActivity).inflate(R.layout.findproject_rlview_item, parent,false);
 
             return new Holder(view);

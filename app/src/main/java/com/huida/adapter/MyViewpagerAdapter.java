@@ -41,10 +41,6 @@ public class MyViewpagerAdapter extends PagerAdapter{
             ContentDataPager contentDataPager = new ContentDataPager(mActivity);
             View view = contentDataPager.initView();
 
-
-            Log.e("iiii", "instantiateItem: "+view );
-            Log.e("iii", "instantiateItem: "+position );
-
             container.addView(view);
             contentDataPager.initData();
 

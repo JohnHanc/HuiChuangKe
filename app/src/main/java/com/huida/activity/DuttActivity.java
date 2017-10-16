@@ -1,26 +1,23 @@
 package com.huida.activity;
 
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.BaseAdapter;
-import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.huida.R;
 import com.huida.adapter.BaseRecycleViewItemData;
-import com.huida.adapter.FindPersonRecyclerAdapter;
-import com.huida.adapter.MyAdapter;
+import com.huida.adapter.MyImagesToolsAdapter;
 import com.huida.view.DividerItemDecoration;
 
 import static com.huida.view.DividerItemDecoration.BOTH_SET;
@@ -42,7 +39,7 @@ public  class DuttActivity extends BaseActivity {
         private int[] icon = { R.mipmap.icon_zr_1, R.mipmap.icon_qg_2,
             R.mipmap.icon_zs_3,R.mipmap.icon_tz_4,R.mipmap.icon_xq_5,R.mipmap.icon_jm_6};
     private String[] iconName = { "转让", "求购", "招商", "投资", "需求","加盟 "};
-    /*private Handler handler=new Handler(){
+ private Handler handler=new Handler(){
         @Override
         public void handleMessage(Message msg) {
             if (msg.what==1){
@@ -58,8 +55,9 @@ public  class DuttActivity extends BaseActivity {
 
 
         }
-    };*/
+    };
     private RecyclerView rl_tools;
+    private MyImagesToolsAdapter adapter;
 
 
     @Override
@@ -96,7 +94,17 @@ public  class DuttActivity extends BaseActivity {
 
     private void initGridData() {
         rl_photo.setLayoutManager(new GridLayoutManager(this,3));
-        rl_photo.setAdapter(new MyAdapter(this,icon,iconName));
+        adapter = new MyImagesToolsAdapter(this, icon, iconName);
+        rl_photo.setAdapter(adapter);
+        adapter.setOnItemClickListener(new MyImagesToolsAdapter.OnRecyclerViewItemClickListener() {
+            @Override
+            public void onItemClick(View view, int tag) {
+                Toast.makeText(DuttActivity.this,iconName[tag],600).show();
+            }
+        });
+
+
+
         rl_photo.addItemDecoration(new DividerItemDecoration(this, BOTH_SET));
     }
 
@@ -128,6 +136,39 @@ public  class DuttActivity extends BaseActivity {
             iv.setImageResource(R.mipmap.pic_wanda);
             iv.setScaleType(ImageView.ScaleType.FIT_CENTER);
             container.addView(iv);
+            iv.setOnTouchListener(new View.OnTouchListener() {
+
+                private long start;
+
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    switch (event.getAction()){
+                        case  MotionEvent.ACTION_DOWN:
+                            start = System.currentTimeMillis();
+                            //自动切换停止
+                            handler.removeCallbacksAndMessages(null);
+                            break;
+                        case  MotionEvent.ACTION_UP:
+                            //自动循环
+                        case  MotionEvent.ACTION_CANCEL:
+                            //事件丢失，自动切换重新开始
+                            handler.sendEmptyMessageDelayed(0,3000);
+                            long end = System.currentTimeMillis();
+                            if (end-start<300){
+                                //点击事件
+                                Toast.makeText(DuttActivity.this
+                                        ,"click",Toast.LENGTH_SHORT).show();
+
+                            }else{
+                                //长按事件
+                                Toast.makeText(DuttActivity.this, "long  click", Toast.LENGTH_SHORT).show();
+                            }
+
+                            break;
+                    }
+                    return true;
+                }
+            });
             return iv;
         }
 

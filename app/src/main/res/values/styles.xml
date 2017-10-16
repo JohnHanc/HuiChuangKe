@@ -47,11 +47,13 @@
             android:layout_marginRight="5dp"-->
     <style name="fpj_msglable_text_style" parent="AlertDialog.AppCompat">
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">@drawable/fpj_rectangle_shape</item>
-        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:background">@drawable/popuptext_groud_selector</item>
+        <item name="android:gravity">center</item>
         <item name="android:layout_marginLeft">5dp</item>
         <item name="android:layout_marginRight">5dp</item>
+        <item name="android:textSize">12dp</item>
     </style>
 
     <style name="Recycleview_listDivider" parent="AlertDialog.AppCompat">

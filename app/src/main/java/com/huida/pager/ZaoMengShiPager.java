@@ -105,18 +105,22 @@ public class ZaoMengShiPager extends BasePager {
 
                 @Override
                 public void onItemClick(View view) {
-                    Log.e("position", "onItemLongClick: " + "长点击");
+
                 }
 
                 @Override
                 public void onItemLongClick(View view) {
-                    Log.e("position", "onItemLongClick: " + "长点击");
+
 
                 }
                 @Override
                 public void onItemClick(View view, int tag) {
                   //  Toast.makeText(mActivity, provinces.get(tag) + "被点击了", 600).show();
+                    int id = view.getId();
+                    switch (id){
 
+                    }
+                    Log.e(TAG, "onItemClick: id"+id );
                     //获取城市
                     String provinceName = provinces.get(tag);
                     Log.e(TAG, "onItemClick:  省份 "+provinceName );

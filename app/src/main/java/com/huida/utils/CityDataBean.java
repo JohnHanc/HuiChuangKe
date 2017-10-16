@@ -167,7 +167,4 @@ public  class CityDataBean{
         return citys;
     }
 
-
-
-
 }

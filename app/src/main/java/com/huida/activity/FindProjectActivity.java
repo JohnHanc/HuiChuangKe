@@ -45,7 +45,6 @@ public  class FindProjectActivity extends BaseActivity {
     public void initView() {
         fg_fpj = (FrameLayout) findViewById(R.id.fpj_fl);
         rg_title = (RadioGroup) findViewById(R.id.rg_fpj_title);
-        tv_select = (TextView) findViewById(R.id.tv_jingfen_saixuan);
         iv_search = (ImageView) findViewById(R.id.iv_jingfen_search);
         rb_jinfen = (RadioButton) findViewById(R.id.rb_fpj_jinfen);
         rb_xifen = (RadioButton) findViewById(R.id.rb_fpj_xifen);
@@ -56,6 +55,8 @@ public  class FindProjectActivity extends BaseActivity {
 
     @Override
     protected void initData() {
+        //默认
+        rb_jinfen.setSelected(true);
         fragmentList = new ArrayList<>();
         fragmentList.add(new JinFenFragment(this));
         fragmentList.add(new XiFenFragment(this));
@@ -64,33 +65,30 @@ public  class FindProjectActivity extends BaseActivity {
          *
          */
         JinFenFragment jf = this.getJingFen();
-        jf.SetSaiXuan(tv_select);
-        jf.SetSearch(iv_search);
 
+        jf.SetSearch(iv_search);
 
         FragmentManager manager = this.getFragmentManager();
         transaction = manager.beginTransaction();
-
-        transaction.replace(R.id.fpj_fl,fragmentList.get(1));
+        transaction.replace(R.id.fpj_fl,fragmentList.get(0));
         transaction.commit();
         initLisitenr();
     }
 
     @Override
     protected void initLisitenr() {
-        Log.e("liling", "initLisitenr: "+"rgggg" );
         rg_title.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
                 transaction = FindProjectActivity.this.getFragmentManager().beginTransaction();
                 switch (i){
                     case  R.id.rb_fpj_jinfen:
-                        Log.e("liling", "initLisitenr: "+"rg1" );
                         transaction.replace(R.id.fpj_fl,fragmentList.get(0));
+                         rb_jinfen.setSelected(true);
                         break;
                     case  R.id.rb_fpj_xifen:
-                        Log.e("liling", "initLisitenr: "+"rg2" );
                         transaction.replace(R.id.fpj_fl,fragmentList.get(1));
+                        rb_xifen.setSelected(true);
                         break;
                     default:
                         break;

@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.huida.R;
@@ -14,21 +15,17 @@ import com.huida.R;
  * Created by liling on 2017/10/2.
  */
 
-public class PopRecycleViewAdapter extends RecyclerView.Adapter<PopRecycleViewAdapter.Holder> implements View.OnClickListener,View.OnLongClickListener {
+public class PopRecycleViewAdapter extends RecyclerView.Adapter<PopRecycleViewAdapter.Holder> implements View.OnClickListener{
     private final String[] data;
     private final Activity mActivity;
-
-
-
+    private int selectedPosition = -5; //默认一个参数
 
     //自定义监听事件
     public static interface OnRecyclerViewItemClickListener {
-        void onItemClick(View view);
-        void onItemLongClick(View view);
         void onItemClick(View view, int tag);
     }
-    private XiFenRecycleAdapter.OnRecyclerViewItemClickListener mOnItemClickListener = null;
-    public void setOnItemClickListener(XiFenRecycleAdapter.OnRecyclerViewItemClickListener listener) {
+    private PopRecycleViewAdapter.OnRecyclerViewItemClickListener mOnItemClickListener = null;
+    public void setOnItemClickListener(PopRecycleViewAdapter.OnRecyclerViewItemClickListener listener) {
         mOnItemClickListener = listener;
     }
     @Override
@@ -38,13 +35,7 @@ public class PopRecycleViewAdapter extends RecyclerView.Adapter<PopRecycleViewAd
         }
     }
 
-    @Override
-    public boolean onLongClick(View view) {
-        if (mOnItemClickListener!=null){
-            mOnItemClickListener.onItemLongClick(view);
-        }
-        return false;
-    }
+
 
 
 
@@ -64,10 +55,14 @@ public class PopRecycleViewAdapter extends RecyclerView.Adapter<PopRecycleViewAd
     }
 
     @Override
-    public void onBindViewHolder(Holder holder, int position) {
+    public void onBindViewHolder(final Holder holder, final int position) {
             holder.bt_item.setText(data[position]);
         //将position保存在itemView的Tag中，以便点击时进行获取
             holder.itemView.setTag(position);
+
+
+
+
     }
 
     @Override
@@ -82,5 +77,6 @@ public class PopRecycleViewAdapter extends RecyclerView.Adapter<PopRecycleViewAd
             super(view);
             bt_item = (Button) view.findViewById(R.id.bt_item);
         }
+
     }
 }
