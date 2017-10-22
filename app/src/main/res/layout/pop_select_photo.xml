@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#55555555">
+                android:background="#fff">
 
     <TextView
         android:id="@+id/photograph"
@@ -14,7 +14,7 @@
         android:background="@drawable/setting_up_selector"
         android:gravity="center"
         android:text="拍照"
-        android:textColor="#0479FE"
+        android:textColor="#000"
         android:textSize="18sp"/>
 
     <TextView
@@ -36,7 +36,7 @@
         android:background="@drawable/setting_down_selector"
         android:gravity="center"
         android:text="从相册选择"
-        android:textColor="#0479FE"
+        android:textColor="#000"
         android:textSize="18sp"/>
 
     <LinearLayout
@@ -52,7 +52,7 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="取 消"
-            android:textColor="#0479FE"
+            android:textColor="#000"
             android:textSize="18sp"/>
     </LinearLayout>
 

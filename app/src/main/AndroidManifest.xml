@@ -38,6 +38,11 @@
         </activity>
         <activity android:name=".activity.ClipActivity"/>
         <activity android:name=".activity.ChatActivity"/>
+        <activity android:name=".activity.ReplayReviewActivity"/>
+        <activity android:name=".activity.ReViewActivity"/>
+        <activity android:name=".activity.ZanActivity"/>
+        <activity android:name=".activity.FoundGroupActivity"/>
+        <activity android:name=".activity.ChatSetActivity"/>
         <activity
             android:name="com.zaaach.citypicker.CityPickerActivity"
             android:screenOrientation="portrait"

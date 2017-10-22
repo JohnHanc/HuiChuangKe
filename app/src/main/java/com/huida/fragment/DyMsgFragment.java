@@ -19,6 +19,8 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.huida.R;
 import com.huida.activity.ChatActivity;
 import com.huida.activity.DynamicActivity;
+import com.huida.activity.ReViewActivity;
+import com.huida.activity.ZanActivity;
 import com.huida.bean.IconBean;
 
 import java.util.ArrayList;
@@ -62,15 +64,22 @@ public class DyMsgFragment extends BaseFragment {
         review.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentTransaction ft = manager.beginTransaction();
-                ft.replace(R.id.fl_dymic,new DyReviewFragment()).commit();
-
+                Intent intent=new Intent(mActivity, ReViewActivity.class);
+                startActivity(intent);
+            }
+        });
+        zan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(mActivity, ZanActivity.class);
+                startActivity(intent);
 
             }
         });
 
        DmRvAdapter adapter = new DmRvAdapter(R.layout.item_dymsg, list);
         rv_dy_msg.setAdapter(adapter);
+
         adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
@@ -80,8 +89,6 @@ public class DyMsgFragment extends BaseFragment {
 
             }
         });
-
-
 
     }
 

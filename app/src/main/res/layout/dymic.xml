@@ -1,10 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <FrameLayout
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.huida.activity.MainActivity"
+    android:background="#fff">
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/fl_dymic">
-    </FrameLayout>
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="3dp"
+        android:layout_marginTop="15dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
+
+        <ImageButton
+            android:id="@+id/ib_dy_found"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/state_found" />
+
+        <RadioGroup
+            android:id="@+id/rg_dy"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rb_dy_state"
+                style="@style/Radio_main_style"
+                android:text="动态" />
+
+            <RadioButton
+                android:id="@+id/rb_dy_msg"
+                style="@style/Radio_main_style"
+                android:text="消息" />
+        </RadioGroup>
+
+        <ImageButton
+            android:id="@+id/ib_dy_create"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@mipmap/state_create" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/line_gray" />
+
+    <FrameLayout
+        android:id="@+id/fl_dy"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></FrameLayout>
+
 </LinearLayout>
+
+
+

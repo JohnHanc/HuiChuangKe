@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/ll_bottomenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/selfdialog">
+
+        <TextView
+            android:id="@+id/tv_bottomenu_takepic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="拍照"
+            android:textSize="18sp"
+            android:gravity="center_horizontal"
+            android:padding="15dp"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1.5dp"
+            android:background="@drawable/state_line"/>
+        <TextView
+            android:id="@+id/tv_bottomenu_choice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="从相册选取"
+            android:textSize="18sp"
+            android:gravity="center_horizontal"
+            android:padding="15dp"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1.5dp"
+            android:background="@drawable/state_line"/>
+
+        <TextView
+            android:id="@+id/tv_bottomenu_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="取消"
+            android:textSize="18sp"
+            android:gravity="center_horizontal"
+            android:padding="15dp"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1.5dp"
+            android:background="@drawable/state_line"/>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

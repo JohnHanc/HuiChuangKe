@@ -2,15 +2,15 @@ package com.huida.activity;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.support.annotation.IdRes;
-import android.widget.FrameLayout;
-import android.widget.RadioButton;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.RadioGroup;
 
 import com.huida.R;
 import com.huida.fragment.DyMsgFragment;
 import com.huida.fragment.DyStateFragment;
-import com.huida.fragment.DynamicFragment;
 
 
 /**
@@ -20,10 +20,12 @@ import com.huida.fragment.DynamicFragment;
 public  class DynamicActivity extends BaseActivity {
 
 
-    private FrameLayout fl_dy;
+
 
     private FragmentManager manager=getFragmentManager();
-
+    private RadioGroup rg_dy;
+    private ImageButton found;
+    private ImageButton create;
 
 
     @Override
@@ -34,22 +36,49 @@ public  class DynamicActivity extends BaseActivity {
     @Override
     public void initView() {
 
-        fl_dy = (FrameLayout) findViewById(R.id.fl_dymic);
+        rg_dy = (RadioGroup) findViewById(R.id.rg_dy);
+        found = (ImageButton) findViewById(R.id.ib_dy_found);
+        create = (ImageButton) findViewById(R.id.ib_dy_create);
 
     }
 
     @Override
     protected void initData() {
 
+        manager = getFragmentManager();
         FragmentTransaction ft = manager.beginTransaction();
-
-        ft.add(R.id.fl_dymic, new DynamicFragment()).commit();
+        rg_dy.check(R.id.rb_dy_state);
+        ft.replace(R.id.fl_dy,new DyStateFragment()).commit();
 
     }
 
     @Override
     protected void initLisitenr() {
 
+        rg_dy.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                FragmentTransaction ft = manager.beginTransaction();
+                switch (checkedId){
+                    case R.id.rb_dy_state:
+                        ft.replace(R.id.fl_dy,new DyStateFragment());
+                        break;
+                    case R.id.rb_dy_msg:
+                        ft.replace(R.id.fl_dy,new DyMsgFragment());
+                        break;
+                }
+                ft.commit();
+            }
+        });
+
+        found.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(DynamicActivity.this, FoundGroupActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 

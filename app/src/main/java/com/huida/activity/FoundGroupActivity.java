@@ -1,24 +1,21 @@
 package com.huida.activity;
 
-import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.huida.R;
 
 /**
- * Created by Liu on 2017/10/15.
+ * Created by Liu on 2017/10/21.
  */
 
-public class ChatActivity extends BaseActivity {
+public class FoundGroupActivity extends BaseActivity {
 
     private ImageView back;
-    private TextView set;
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_chat;
+        return R.layout.activity_foundgroup;
     }
 
     /**
@@ -26,9 +23,8 @@ public class ChatActivity extends BaseActivity {
      */
     @Override
     public void initView() {
-        back = (ImageView) findViewById(R.id.iv_chat_back);
-        set = (TextView) findViewById(R.id.tv_chat_set);
 
+        back = (ImageView) findViewById(R.id.iv_found_back);
     }
 
     /**
@@ -44,19 +40,12 @@ public class ChatActivity extends BaseActivity {
      */
     @Override
     protected void initLisitenr() {
+
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
-        set.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ChatActivity.this, ChatSetActivity.class);
-                startActivity(intent);
-            }
-        });
-
     }
 }

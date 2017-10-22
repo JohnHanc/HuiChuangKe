@@ -6,7 +6,7 @@
     <!--radiobutton字体颜色（主页面的5个radiobutton）-->
 
     <color name="radiotextcolor_normal">#7F7F7F</color>
-    <color name="radiotextcolor_press">#81BAF7</color>
+    <color name="radiotextcolor_press">#3dabfd</color>
     <color name="textview_bg_color">#ededed</color>
     <!-- 标签字体颜色-->
     <color name="fjp_tab_textcolor_normal">#343333</color>

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#fff">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -10,17 +11,18 @@
         android:padding="10dp">
         <ImageView
             android:id="@+id/iv_chat_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@mipmap/more_left"/>
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@mipmap/more_left"/>
         <TextView
             android:id="@+id/tv_chat_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:text="与XXX聊天中"
+            android:text="名字"
             android:textSize="18sp"/>
         <TextView
+            android:id="@+id/tv_chat_set"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="设置"
